@@ -419,7 +419,7 @@ public:
                         if (Creature* creature = instance->GetCreature(guid))
                             creature->DespawnOrUnsummon();
 
-                    _scheduler.Schedule(300s, [this](TaskContext)
+                    _scheduler.Schedule(118s, [this](TaskContext)
                         {
                             for (ObjectGuid const& guid : _baseAlliance)
                                 if (Creature* creature = instance->GetCreature(guid))
@@ -442,7 +442,7 @@ public:
                         if (Creature* creature = instance->GetCreature(guid))
                             creature->DespawnOrUnsummon();
 
-                    _scheduler.Schedule(300s, [this](TaskContext)
+                    _scheduler.Schedule(118s, [this](TaskContext)
                         {
                             for (ObjectGuid const& guid : _baseHorde)
                                 if (Creature* creature = instance->GetCreature(guid))
@@ -462,7 +462,7 @@ public:
 
                     GetCreature(DATA_ARCHIMONDE)->DespawnOrUnsummon();
 
-                    _scheduler.Schedule(300s, [this](TaskContext)
+                    _scheduler.Schedule(118s, [this](TaskContext)
                         {
                             for (ObjectGuid const& guid : _baseNightElf)
                                 if (Creature* creature = instance->GetCreature(guid))
