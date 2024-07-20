@@ -273,12 +273,12 @@ public:
                     m_auiEncounter[DATA_NALORAKKEVENT] = data;
                     if (data == DONE)
                     {
+                        ++BossKilled;
                         if (QuestMinute)
                         {
                             QuestMinute += 15;
                             DoUpdateWorldState(WORLDSTATE_TIME_TO_SACRIFICE, QuestMinute);
                             SummonHostage(0);
-                            ++BossKilled;
 						}
                     }
                     break;
@@ -287,12 +287,12 @@ public:
                     HandleGameObject(AkilzonDoorGUID, data != IN_PROGRESS);
                     if (data == DONE)
                     {
+                        ++BossKilled;
                         if (QuestMinute)
                         {
                             QuestMinute += 10;
                             DoUpdateWorldState(WORLDSTATE_TIME_TO_SACRIFICE, QuestMinute);
                             SummonHostage(1);
-                            ++BossKilled;
                         }
                     }
                     break;
@@ -300,8 +300,8 @@ public:
                     m_auiEncounter[DATA_JANALAIEVENT] = data;
                     if (data == DONE)
 					{
-                        SummonHostage(2);
                         ++BossKilled;
+                        SummonHostage(2);
 					}
 
                     break;
@@ -310,9 +310,9 @@ public:
                     //HandleGameObject(HalazziDoorGUID, data != IN_PROGRESS);
                     if (data == DONE)
                     {
+                        ++BossKilled;
                         SummonHostage(3);
                         HandleGameObject(HalazziDoorGUID, true);
-                        ++BossKilled;
                     }
                     break;
                 case DATA_HEXLORDEVENT:
