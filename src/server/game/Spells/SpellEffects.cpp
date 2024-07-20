@@ -959,7 +959,7 @@ void Spell::EffectTriggerSpell(SpellEffIndex effIndex)
                         //CastSpellExtraArgs args(true);
                         //args.AddSpellBP0(basepoints0);
                         //unitTarget->CastSpell(unitTarget, triggered_spell_id, args);
-                        unitTarget->CastCustomSpell(unitTarget, triggered_spell_id, &basepoints0, nullptr, nullptr, true);
+                        unitTarget->CastCustomSpell(unitTarget, triggered_spell_id, &basepoints0, nullptr, nullptr, true, nullptr, nullptr, m_caster->GetGUID());
                         return;
                     }
                     default:
@@ -1242,7 +1242,7 @@ void Spell::EffectTriggerRitualOfSummoning(SpellEffIndex effIndex)
 
     finish();
 
-    m_caster->CastSpell((Unit*)nullptr, spellInfo, false);
+    m_caster->CastSpell((Unit*)nullptr, spellInfo, true);
 }
 
 void Spell::EffectJump(SpellEffIndex effIndex)
