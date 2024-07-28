@@ -3607,62 +3607,6 @@ void SpellMgr::LoadSpellInfoCorrections()
         spellInfo->Effects[EFFECT_0].RadiusEntry = sSpellRadiusStore.LookupEntry(EFFECT_RADIUS_10_YARDS); // 10yd
     });
 
-    // Dragonmaw Race: All parts
-    ApplySpellFix({
-        40890   // Oldie's Rotten Pumpkin
-        }, [](SpellInfo* spellInfo)
-    {
-        spellInfo->Targets |= TARGET_FLAG_DEST_LOCATION;
-        spellInfo->Effects[EFFECT_0].TriggerSpell = 40905;
-        spellInfo->Effects[EFFECT_0].Effect = SPELL_EFFECT_TRIGGER_MISSILE;
-        spellInfo->Effects[EFFECT_0].TargetA = SpellImplicitTargetInfo(TARGET_DEST_DEST);
-    });
-
-    // Trope's Slime Cannon
-    ApplySpellFix({ 40909 }, [](SpellInfo* spellInfo)
-    {
-        spellInfo->Targets |= TARGET_FLAG_DEST_LOCATION;
-        spellInfo->Effects[EFFECT_0].TriggerSpell = 40905;
-        spellInfo->Effects[EFFECT_0].Effect = SPELL_EFFECT_TRIGGER_MISSILE;
-        spellInfo->Effects[EFFECT_0].TargetA = SpellImplicitTargetInfo(TARGET_DEST_DEST);
-    });
-
-    // Corlok's Skull Barrage
-    ApplySpellFix({ 40894 }, [](SpellInfo* spellInfo)
-    {
-        spellInfo->Targets |= TARGET_FLAG_DEST_LOCATION;
-        spellInfo->Effects[EFFECT_0].TriggerSpell = 40900;
-        spellInfo->Effects[EFFECT_0].Effect = SPELL_EFFECT_TRIGGER_MISSILE;
-        spellInfo->Effects[EFFECT_0].TargetA = SpellImplicitTargetInfo(TARGET_DEST_DEST);
-    });
-
-    // Ichman's Blazing Fireball
-    ApplySpellFix({ 40928 }, [](SpellInfo* spellInfo)
-    {
-        spellInfo->Targets |= TARGET_FLAG_DEST_LOCATION;
-        spellInfo->Effects[EFFECT_0].TriggerSpell = 40929;
-        spellInfo->Effects[EFFECT_0].Effect = SPELL_EFFECT_TRIGGER_MISSILE;
-        spellInfo->Effects[EFFECT_0].TargetA = SpellImplicitTargetInfo(TARGET_DEST_DEST);
-    });
-
-    // Mulverick's Great Balls of Lightning
-    ApplySpellFix({ 40930 }, [](SpellInfo* spellInfo)
-    {
-        spellInfo->Targets |= TARGET_FLAG_DEST_LOCATION;
-        spellInfo->Effects[EFFECT_0].TriggerSpell = 40931;
-        spellInfo->Effects[EFFECT_0].Effect = SPELL_EFFECT_TRIGGER_MISSILE;
-        spellInfo->Effects[EFFECT_0].TargetA = SpellImplicitTargetInfo(TARGET_DEST_DEST);
-    });
-
-    // Sky Shatter
-    ApplySpellFix({ 40945 }, [](SpellInfo* spellInfo)
-    {
-        spellInfo->Targets |= TARGET_FLAG_DEST_LOCATION;
-        spellInfo->Effects[EFFECT_0].TriggerSpell = 41064;
-        spellInfo->Effects[EFFECT_0].Effect = SPELL_EFFECT_TRIGGER_MISSILE;
-        spellInfo->Effects[EFFECT_0].TargetA = SpellImplicitTargetInfo(TARGET_DEST_DEST);
-    });
-
     // Gauging the Resonant Frequency (10594)
     ApplySpellFix({ 37390 }, [](SpellInfo* spellInfo)
     {
@@ -4806,6 +4750,38 @@ void SpellMgr::LoadSpellInfoCorrections()
     ApplySpellFix({ 33051 }, [](SpellInfo* spellInfo)
     {
         spellInfo->AttributesEx4 |= SPELL_ATTR4_NO_CAST_LOG;
+    });
+
+    // Gor'drek's Ointment
+    ApplySpellFix({ 32578 }, [](SpellInfo* spellInfo)
+    {
+        spellInfo->AttributesEx3 |= SPELL_ATTR3_SUPRESS_CASTER_PROCS;
+        spellInfo->AttributesEx3 |= SPELL_ATTR3_SUPRESS_TARGET_PROCS;
+    });
+
+    // Shadow Grasp
+    ApplySpellFix({ 30410 }, [](SpellInfo* spellInfo)
+    {
+        spellInfo->AttributesEx6 |= SPELL_ATTR6_NO_PUSHBACK;
+    });
+
+    ApplySpellFix({
+        471, // Palamino
+        8980, // Skeletal Horse
+        10788, // Leopard
+        10790, // Tiger
+        10792, // Spotted Panther
+        60136, // Grand Caravan Mammoth
+        60140 // Grand Caravan Mammoth
+        }, [](SpellInfo* spellInfo)
+    {
+        spellInfo->AuraInterruptFlags &= ~AURA_INTERRUPT_FLAG_NOT_ABOVEWATER;
+    });
+
+    // Molten Punch
+    ApplySpellFix({ 40126 }, [](SpellInfo* spellInfo)
+    {
+        spellInfo->Effects[EFFECT_0].TargetB = SpellImplicitTargetInfo(TARGET_DEST_CASTER);
     });
 
     for (uint32 i = 0; i < GetSpellInfoStoreSize(); ++i)
